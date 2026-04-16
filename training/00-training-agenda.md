@@ -231,6 +231,44 @@ The point isn't to show off — it's to expand their sense of what's possible. A
 
 ---
 
+---
+
+## Homework: Build & Share a Skill
+
+**Due:** End of next week
+
+### The Assignment
+
+Build one skill that you will actually use as part of your role. Not a toy — something real that saves you time on a task you do regularly.
+
+### Requirements
+
+1. **It must be something you do repeatedly** — a weekly report, a data check, an email workflow, a research task, a review process — anything you find yourself doing more than once
+2. **Use the hand-holding process** — do the task once with Claude in a normal conversation, then turn that conversation into a skill
+3. **Install it globally** — put it in `~/.claude/skills/` so it works across all Claude surfaces
+4. **Test it** — run the skill at least twice to make sure it works reliably
+5. **Push it to clawd-skills** — share it with the team by pushing it to the NovaeoGit/clawd-skills repo under `skills/[your-skill-name]/`
+6. **Post in Discussions** — write a short post in NovaeoGit Discussions explaining what your skill does, what task it replaces, and how much time it saves
+
+### How to Get Started
+
+Prompt Claude Code:
+
+> I need to build a skill for [describe what you do regularly]. Let's do it together first so I can see how it works, and then we'll turn it into a reusable skill.
+
+### Ideas by Role
+
+Think about what you spend time on every week. Some examples:
+
+- **Sourcing:** Researching a new supplier and building a comparison sheet
+- **Procurement:** Checking PO status across Baserow and drafting follow-up emails
+- **Content/SEO:** Auditing a product page for SEO gaps and generating improvement recommendations
+- **Operations:** Generating a weekly inventory or sales summary
+- **Marketing:** Analyzing competitor listings or social media presence
+- **General:** Formatting data, writing recurring reports, processing emails, updating spreadsheets
+
+Pick something that matters to YOUR work. The best skill is the one you'll actually use every week.
+
 ### Closing Reinforcement
 
 End the training by coming back to the opening:
