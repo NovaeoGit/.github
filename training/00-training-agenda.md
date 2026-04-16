@@ -27,13 +27,7 @@ This isn't a suggestion — it's the new workflow. Claude is your first stop, ev
 
 ## Part 1: The Claude Suite (20 min)
 
-### 1.1 Live Demo — "Watch This" (5 min)
-
-Before showing any UI, do a live demo that demonstrates raw power. Pick something relevant to the team's actual work and do it in real time — something that would normally take hours, done in minutes. Let them see it happen.
-
-*Suggested: build something from scratch in Claude Code, or take a messy real-world task and solve it live. The point is the "holy shit" moment — set the tone for the rest of the training.*
-
-### 1.2 Claude Web (claude.ai)
+### 1.1 Claude Web (claude.ai)
 - **Chat** — general conversation, analysis, writing, research
 - **Code** (claude.ai/code) — browser-based Claude Code, same engine as terminal
 - Available connectors: Google Drive, GitHub, web search, file uploads
@@ -209,6 +203,33 @@ Free time to:
 - Build a skill for something you actually need
 - Try Claude Cowork with a teammate
 - Ask questions — **to Claude first, then to the group**
+
+---
+
+## Part 7 (Optional): Live Demo — "Watch This"
+
+If time allows, end with a live power demo. The goal is to leave the team with a visceral sense of what Claude can do when you just ask it.
+
+Pick one of these (or improvise based on the room's energy):
+
+**Build a working web app from one sentence:**
+> "Build me a web app that lets someone paste an Amazon ASIN and it shows the product title, price, rating, and top 5 review themes. Make it look professional."
+
+Watch a full working tool materialize from nothing — HTML, CSS, JavaScript — then open it in a browser.
+
+**Full brand audit from a URL:**
+> "Go to [one of your Shopify stores] and do a complete audit — homepage, product pages, SEO meta tags, page speed issues, mobile experience, and content gaps. Give me a prioritized list of improvements."
+
+Something that takes consultants weeks, done in minutes.
+
+**Turn a messy email into structured action:**
+> "Here's a supplier email [paste a real one]. Parse out every quote, compare the prices to what we're currently paying, draft a response negotiating better terms on the items where we're overpaying, and create a summary table I can share with the team."
+
+Something the team does manually every day, handled instantly.
+
+The point isn't to show off — it's to expand their sense of what's possible. After a full training of hands-on work, this demo hits differently because they now have the foundation to do it themselves.
+
+---
 
 ### Closing Reinforcement
 
