@@ -95,19 +95,24 @@ Follow along in Obsidian — open `skills/hello-world/SKILL.md` in the sidebar t
 
 ## Part 5: Install the Skill Natively (5 min)
 
-Skills in the `skills/` folder are just reference copies. To make Claude Code natively recognize a skill (auto-trigger it and make it available as a `/slash-command`), it needs to live in `.claude/skills/`.
+Skills in the `skills/` folder are just reference copies in the repo. To make Claude Code natively recognize a skill (auto-trigger it and make it available as a `/slash-command`), it needs to be installed to your personal skills folder.
 
 Prompt Claude Code:
 
-> **Install the hello-world skill as a native Claude Code skill. Copy it from the skills/ folder into this project's .claude/skills/ folder.**
+> **Install the hello-world skill as a global Claude Code skill. Copy it from the skills/ folder into ~/.claude/skills/hello-world/ so it's available across all my projects.**
 
-Watch Obsidian — you'll see a new `.claude/skills/hello-world/SKILL.md` file appear. Claude Code picks up new skills live, no restart needed.
+Claude Code picks up new skills live — no restart needed. The skill is now available everywhere:
+- **Claude Code CLI** (terminal)
+- **Claude Code Desktop app**
+- **Claude Cowork** (multi-agent collaboration)
+- **VS Code / JetBrains extensions**
+- **Claude Code web app** (claude.ai/code)
 
 **How native skills work:**
 - **Auto-trigger** — Claude reads the skill's description and automatically uses it when your prompt matches
 - **Slash command** — you can also type `/hello-world` directly to invoke it
-- **Project-level** skills in `.claude/skills/` only load for this project
-- **Personal skills** in `~/.claude/skills/` load across all your projects
+- **Global skills** in `~/.claude/skills/` load across all your projects and all Claude Code surfaces
+- **Project skills** in `.claude/skills/` only load for that specific project
 
 ---
 
@@ -145,7 +150,7 @@ Then browse the full catalog:
 
 Want to install more? Just ask:
 
-> **Install the PDF skill as a native Claude Code skill too.**
+> **Install the PDF skill globally too, same as hello-world.**
 
 ---
 
@@ -153,9 +158,9 @@ Want to install more? Just ask:
 
 Ready to build? Prompt Claude Code:
 
-> **Create a new native skill called "my-first-skill" in .claude/skills/. Base it on the hello-world template. I want it to [describe what you want it to do].**
+> **Create a new global skill called "my-first-skill" in ~/.claude/skills/. Base it on the hello-world template. I want it to [describe what you want it to do].**
 
-Watch Obsidian as Claude Code creates the folder and writes the SKILL.md. You'll see it follow the same structure — frontmatter, routing, workflow, templates, post-run. The skill is immediately available — try invoking it with `/my-first-skill`.
+Claude Code will create the folder and write the SKILL.md following the same structure — frontmatter, routing, workflow, templates, post-run. The skill is immediately available everywhere — try invoking it with `/my-first-skill`.
 
 Some ideas to try:
 - A skill that summarizes a git repo's recent activity
