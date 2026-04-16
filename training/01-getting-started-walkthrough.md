@@ -2,236 +2,165 @@
 
 **Time:** ~30 minutes | **Difficulty:** Beginner | **Prerequisites:** See pre-meeting checklist
 
-This walkthrough takes you from zero to running your first Claude Code skill. By the end, you'll have cloned a repo, explored a skill, and run it live.
+This walkthrough takes you from zero to running your first Claude Code skill. By the end, you'll have cloned a repo, explored a skill, and run it live — all by prompting Claude Code in plain English.
 
 ---
 
-## Part 1: Verify Your Setup (5 min)
+## Setup (do this once at the start)
 
-### 1.1 Confirm Claude Code is installed
+### Open your terminal
 
-Open your terminal (Terminal on Mac, PowerShell on Windows) and run:
+- **Mac:** Press `Cmd + Space`, type `Terminal`, press Enter
+- **Windows:** Press `Win + R`, type `powershell`, press Enter
 
-```bash
-claude --version
+### Start Claude Code
+
+Type this one command and press Enter:
+
 ```
-
-You should see a version number. If not, revisit the install instructions.
-
-### 1.2 Authenticate Claude Code
-
-If this is your first time, Claude Code will prompt you to log in:
-
-```bash
 claude
 ```
 
-Follow the browser prompt to authenticate with your Anthropic account.
+That's the last terminal command you need to type. From here on, everything is done by talking to Claude Code.
 
-### 1.3 Confirm GitHub CLI access
+### Open Obsidian
 
-```bash
-gh auth status
-```
+Open the Obsidian app. We'll connect it to your working folder in a moment so you can watch Claude Code make changes in real time.
 
-You should see your GitHub account. If not:
+---
 
-```bash
-gh auth login
-```
+## Part 1: Connect to GitHub (5 min)
 
-Choose **GitHub.com > HTTPS > Login with a web browser** and follow the prompts.
+Prompt Claude Code:
+
+> **Log me into GitHub using the GitHub CLI. Walk me through the steps.**
+
+Claude Code will run `gh auth login` and guide you through the browser login flow. Follow the prompts it gives you.
+
+Once logged in, confirm it worked:
+
+> **Am I logged into GitHub? What account am I using?**
 
 ---
 
 ## Part 2: Clone the Skills Repo (5 min)
 
-### 2.1 Clone clawd-skills
+Prompt Claude Code:
 
-```bash
-cd ~
-gh repo clone NovaeoGit/clawd-skills
-cd clawd-skills
-```
+> **Clone the NovaeoGit/clawd-skills repo into my home directory and open it as our working folder.**
 
-### 2.2 Take a quick look around
+Claude Code will clone the repo and `cd` into it. Now connect Obsidian to the same folder so you can see the files:
 
-```bash
-ls
-```
+1. In Obsidian, click **Open another vault** (vault icon, bottom left)
+2. Click **Open folder as vault**
+3. Navigate to your home folder and select the `clawd-skills` folder
+   - **Mac:** `/Users/[your-username]/clawd-skills`
+   - **Windows:** `C:\Users\[your-username]\clawd-skills`
+4. Click Open
 
-You'll see:
-- `README.md` — full skill catalog
-- `CLAUDE.md` — project guide (Claude Code reads this automatically)
-- `docs/` — design guides
-- `skills/` — 75+ production skills
-- `.env.example` — environment variable template
-
-### 2.3 Set up your environment file
-
-```bash
-cp .env.example .env
-```
-
-Now edit `.env` and add the API keys from Dashlane. At minimum you need:
-
-```
-ANTHROPIC_API_KEY=your_key_here
-```
-
-The rest can be added later as you explore different skills.
+You should now see the repo's files in Obsidian's sidebar. As Claude Code creates and edits files, you'll see the changes appear here in real time.
 
 ---
 
-## Part 3: Explore the Hello World Skill (5 min)
+## Part 3: Set Up Your Environment (5 min)
 
-### 3.1 Look at the skill structure
+Prompt Claude Code:
 
-```bash
-ls skills/hello-world/
-```
+> **Create a .env file from the .env.example template. I have these API keys from Dashlane — help me fill them in.**
 
-There's one file: `SKILL.md`. This is all a skill needs.
+Then paste your API keys from Dashlane when Claude Code asks for them. At minimum:
 
-### 3.2 Read through it
+> **Set ANTHROPIC_API_KEY to [paste your key]**
 
-```bash
-cat skills/hello-world/SKILL.md
-```
-
-Notice the structure:
-1. **YAML frontmatter** (top) — name + description for routing
-2. **Routing** — when to use / when not to use
-3. **Prerequisites** — what's needed
-4. **Workflow** — step-by-step instructions
-5. **Examples** — concrete input/output pairs
-6. **Templates** — output formatting
-7. **Troubleshooting** — common issues
-8. **Post-Run: Self-Improvement** — mandatory in every skill
-
-This pattern is the same across all 75+ skills.
+Watch Obsidian — you'll see the `.env` file appear and get populated.
 
 ---
 
-## Part 4: Run the Skill with Claude Code (10 min)
+## Part 4: Explore the Hello World Skill (5 min)
 
-### 4.1 Fire up Claude Code in the repo
+Prompt Claude Code:
 
-```bash
-cd ~/clawd-skills
-claude
-```
+> **Show me the hello-world skill. Explain each section and what it does.**
 
-Claude Code automatically reads the `CLAUDE.md` and knows about the skill system.
+Claude Code will read `skills/hello-world/SKILL.md` and walk you through:
+- **Frontmatter** — how the agent knows when to use this skill
+- **Routing** — trigger phrases and disambiguation
+- **Workflow** — the step-by-step instructions
+- **Templates** — output formatting
+- **Post-Run** — how skills self-improve after every run
 
-### 4.2 Install the hello-world skill
-
-Inside Claude Code, type:
-
-```
-Copy the hello-world skill to my OpenClaw skills directory
-```
-
-Or do it manually:
-
-```bash
-mkdir -p ~/.openclaw/skills
-cp -r skills/hello-world ~/.openclaw/skills/
-```
-
-### 4.3 Trigger the skill
-
-Now ask Claude Code something that matches the skill's routing:
-
-```
-Summarize the skills directory
-```
-
-Claude Code should:
-1. Recognize this matches the hello-world skill
-2. Run the file analysis commands
-3. Output a formatted directory summary with file counts, sizes, and recent files
-
-### 4.4 Try variations
-
-```
-What's in the docs folder?
-```
-
-```
-How big is this repo?
-```
-
-```
-Show me recently modified files in skills/
-```
+Follow along in Obsidian — open `skills/hello-world/SKILL.md` in the sidebar to read it yourself while Claude Code explains it.
 
 ---
 
-## Part 5: Look at a Production Skill (5 min)
+## Part 5: Run the Skill (10 min)
 
-Now that you understand the format, look at a real production skill:
+Now trigger it. Prompt Claude Code:
 
-### 5.1 Browse a simple one
+> **Summarize the skills directory**
 
-```bash
-cat skills/pdf/SKILL.md
-```
+Claude Code will recognize this matches the hello-world skill and run it — counting files, measuring sizes, finding recently modified files, and outputting a formatted report.
 
-Notice how it follows the same structure as hello-world, but does real work.
+Try a few more:
 
-### 5.2 Browse the skill catalog
+> **What's in the docs folder?**
 
-```bash
-cat README.md
-```
+> **Show me recently modified files in this repo**
 
-Scroll through the tables to see all 75+ skills organized by category.
-
-### 5.3 Read the design guide
-
-```bash
-cat docs/SKILL-DESIGN-GUIDE.md
-```
-
-This is the reference for building your own skills — routing logic, progressive disclosure, anti-patterns, and testing.
+> **How big is this project?**
 
 ---
 
-## Part 6: Create Your Own Skill (Bonus)
+## Part 6: Look at a Production Skill (5 min)
 
-Ready to build something? Start from the template:
+Now see what a real skill looks like. Prompt Claude Code:
 
-```bash
-cp -r skills/hello-world skills/my-first-skill
-```
+> **Show me the PDF skill and compare its structure to hello-world. What's the same and what's different?**
 
-Then ask Claude Code:
+Then browse the full catalog:
 
-```
-Help me turn skills/my-first-skill into a skill that [describe what you want].
-Update the SKILL.md with the correct routing, workflow, and templates.
-```
+> **List all the skills in this repo organized by category**
 
-Claude Code will rewrite the SKILL.md for your use case, following the patterns from the design guide.
+---
+
+## Part 7: Create Your Own Skill (Bonus)
+
+Ready to build? Prompt Claude Code:
+
+> **Create a new skill called "my-first-skill" based on the hello-world template. I want it to [describe what you want it to do].**
+
+Watch Obsidian as Claude Code creates the folder and writes the SKILL.md. You'll see it follow the same structure — frontmatter, routing, workflow, templates, post-run.
+
+Some ideas to try:
+- A skill that summarizes a git repo's recent activity
+- A skill that generates a daily standup report
+- A skill that checks a project for missing documentation
 
 ---
 
 ## What's Next?
 
-- **Explore other repos** — check out `procurement-agent` or `sourcing-agent` to see how skills plug into full agent systems
-- **Read the org README** — [github.com/NovaeoGit](https://github.com/NovaeoGit) has links to all reference docs
-- **Ask questions** — post in [Org Discussions](https://github.com/orgs/NovaeoGit/discussions)
-- **Anthropic docs** — [docs.anthropic.com/en/docs/claude-code/skills](https://docs.anthropic.com/en/docs/claude-code/skills) for the official skill reference
+Ask Claude Code:
+
+> **What other repos are in the NovaeoGit organization? Give me a summary of each.**
+
+> **Clone the procurement-agent repo and show me how its skills connect to the agent system.**
+
+Explore on your own:
+- **Org README** — [github.com/NovaeoGit](https://github.com/NovaeoGit) has links to all repos and reference docs
+- **Discussions** — [github.com/orgs/NovaeoGit/discussions](https://github.com/orgs/NovaeoGit/discussions) for questions and knowledge sharing
+- **Official docs** — [docs.anthropic.com/en/docs/claude-code/skills](https://docs.anthropic.com/en/docs/claude-code/skills)
 
 ---
 
 ## Troubleshooting
 
-| Problem | Solution |
-|---------|----------|
-| `claude: command not found` | Reinstall: `npm install -g @anthropic-ai/claude-code` |
-| `gh: command not found` | Install GitHub CLI: `brew install gh` (Mac) or `winget install GitHub.cli` (Windows) |
-| Permission denied cloning repo | Make sure you accepted the NovaeoGit org invite |
-| Claude Code doesn't recognize the skill | Make sure you're running `claude` from inside the `clawd-skills` directory |
-| `.env` not loading | Check the file is named `.env` (not `.env.example`) and is in the repo root |
+| Problem | What to tell Claude Code |
+|---------|--------------------------|
+| Can't clone the repo | "I'm getting a permission error cloning from NovaeoGit. Help me fix it." |
+| Claude Code doesn't recognize the skill | "I'm in the clawd-skills directory but the skill isn't triggering. What's wrong?" |
+| .env not working | "My API keys aren't being loaded. Can you check my .env file?" |
+| Obsidian not showing changes | Close and reopen the vault, or click a different folder and back |
+| General confusion | "I'm stuck. Can you explain what just happened and what I should do next?" |
+
+The best part about Claude Code: when in doubt, just ask it. Describe what you're trying to do and it will help you get there.
