@@ -80,7 +80,7 @@ Watch Obsidian — you'll see the `.env` file appear and get populated.
 
 Prompt Claude Code:
 
-> **Show me the hello-world skill. Explain each section and what it does.**
+> **Show me the hello-world skill in the skills folder. Explain each section and what it does.**
 
 Claude Code will read `skills/hello-world/SKILL.md` and walk you through:
 - **Frontmatter** — how the agent knows when to use this skill
@@ -93,13 +93,35 @@ Follow along in Obsidian — open `skills/hello-world/SKILL.md` in the sidebar t
 
 ---
 
-## Part 5: Run the Skill (10 min)
+## Part 5: Install the Skill Natively (5 min)
+
+Skills in the `skills/` folder are just reference copies. To make Claude Code natively recognize a skill (auto-trigger it and make it available as a `/slash-command`), it needs to live in `.claude/skills/`.
+
+Prompt Claude Code:
+
+> **Install the hello-world skill as a native Claude Code skill. Copy it from the skills/ folder into this project's .claude/skills/ folder.**
+
+Watch Obsidian — you'll see a new `.claude/skills/hello-world/SKILL.md` file appear. Claude Code picks up new skills live, no restart needed.
+
+**How native skills work:**
+- **Auto-trigger** — Claude reads the skill's description and automatically uses it when your prompt matches
+- **Slash command** — you can also type `/hello-world` directly to invoke it
+- **Project-level** skills in `.claude/skills/` only load for this project
+- **Personal skills** in `~/.claude/skills/` load across all your projects
+
+---
+
+## Part 6: Run the Skill (10 min)
 
 Now trigger it. Prompt Claude Code:
 
 > **Summarize the skills directory**
 
 Claude Code will recognize this matches the hello-world skill and run it — counting files, measuring sizes, finding recently modified files, and outputting a formatted report.
+
+Or invoke it directly:
+
+> **/hello-world**
 
 Try a few more:
 
@@ -111,7 +133,7 @@ Try a few more:
 
 ---
 
-## Part 6: Look at a Production Skill (5 min)
+## Part 7: Look at a Production Skill (5 min)
 
 Now see what a real skill looks like. Prompt Claude Code:
 
@@ -121,15 +143,19 @@ Then browse the full catalog:
 
 > **List all the skills in this repo organized by category**
 
+Want to install more? Just ask:
+
+> **Install the PDF skill as a native Claude Code skill too.**
+
 ---
 
-## Part 7: Create Your Own Skill (Bonus)
+## Part 8: Create Your Own Skill (Bonus)
 
 Ready to build? Prompt Claude Code:
 
-> **Create a new skill called "my-first-skill" based on the hello-world template. I want it to [describe what you want it to do].**
+> **Create a new native skill called "my-first-skill" in .claude/skills/. Base it on the hello-world template. I want it to [describe what you want it to do].**
 
-Watch Obsidian as Claude Code creates the folder and writes the SKILL.md. You'll see it follow the same structure — frontmatter, routing, workflow, templates, post-run.
+Watch Obsidian as Claude Code creates the folder and writes the SKILL.md. You'll see it follow the same structure — frontmatter, routing, workflow, templates, post-run. The skill is immediately available — try invoking it with `/my-first-skill`.
 
 Some ideas to try:
 - A skill that summarizes a git repo's recent activity
