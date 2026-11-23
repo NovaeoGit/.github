@@ -1,7 +1,7 @@
 # <Application name> — Deployment Map
 
 **Document owner:** <team / named operator or UNASSIGNED>  
-**Inventory verified:** <YYYY-MM-DD, timezone>  
+**Evidence checked:** <YYYY-MM-DD, timezone; separate source, control-plane and runtime checks>  
 **Application lifecycle:** PROTOTYPE | STAGING | PRODUCTION | DECOMMISSIONED  
 **Document status:** DRAFT | APPROVED  
 **Canonical code:** <owner/repo, default branch, links>
@@ -25,16 +25,11 @@
 | MCP / agents | <provider> | <service / endpoint / scope> | … | … | … |
 | CI, monitoring, alerts | <provider> | <workflow / monitor ID> | … | … | … |
 
-**Not deployed or not verified:** <explicit gaps>. A planned service is not an existing resource. Distinguish service account names from operational users; names alone do not prove authorization.
+**Not deployed or not verified:** <explicit gaps>. State production and nonproduction separately; a protected prototype is still a hosted deployment. A planned service is not an existing resource. Distinguish service account names from operational users; names alone do not prove authorization.
 
-## Verified connections
+## Connections and trust boundaries
 
-\`\`\`mermaid
-flowchart TD
-    U[Browser / agent] --> FE[Verified frontend or NOT DEPLOYED]
-    FE --> API[Verified API or NOT DEPLOYED]
-    API --> DB[Verified DB or NOT DEPLOYED]
-\`\`\`
+<Add a compact Mermaid diagram only when it clarifies branching, dependencies or trust boundaries; otherwise use a dependency table. Label each edge with its evidence status. A diagram is not deployment evidence.>
 
 For each connection describe **the actual trust boundary** and which party owns authorization, source-of-truth data and writes. Distinguish authorized identity assertion from browser-provided identity. Record unverified edges as dotted/labelled.
 
@@ -49,7 +44,8 @@ For each connection describe **the actual trust boundary** and which party owns 
 ## Deployment and rollback
 
 - CI entrypoint and **exact gates**: <workflow links / required checks>.
-- Trigger: <merge, PR, manual approval, tag>. **Do not guess auto-deploy.**
+- Trigger: <push, branch creation, PR, manual approval, tag>. Record GitHub Actions and native provider Git integration separately, including branch/path filters. **Do not guess auto-deploy or assume Draft/docs-only changes are exempt.**
+- Documentation publication: <verified no-deployment path, provider-supported skip mechanism, or BLOCKED pending a specific authorization>. Do not change provider settings or bypass required gates merely to publish a map.
 - Deployment identity: <service, branch, image/revision, immutable evidence>.
 - Operator-run rollback and health verification: <linked runbook> — or NOT DOCUMENTED.
 - Migration ordering and changes requiring human approval: <runbook>.
@@ -72,7 +68,7 @@ For each connection describe **the actual trust boundary** and which party owns 
 
 ## Evidence and linked documents
 
-- Source and deployment configs: <repo files>.
+- Source and deployment configs: <repo files pinned to the inspected branch and commit SHA>. State when the default branch differs from the deployed branch; do not attribute one branch's workflow to another.
 - Service/control-plane readback: <provider dash/CLI and exact timestamp>.
 - Current operational runbook: <link>. **This map indexes existing detailed runbooks, it does not rewrite them.**
 - Release and work tracker: <Linear project and issues>.
