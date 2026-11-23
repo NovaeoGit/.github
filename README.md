@@ -5,6 +5,7 @@ This is the Novaeo organization meta-repository. It powers the [org profile READ
 ## What's Here
 
 - **`profile/README.md`** — The public-facing organization profile displayed at [github.com/NovaeoGit](https://github.com/NovaeoGit)
+- **[`docs/architecture/DEPLOYMENT-MAP.template.md`](docs/architecture/DEPLOYMENT-MAP.template.md)** — Reusable deployment-map template and [change policy](docs/architecture/README.md) for app repositories; no internal resource data is stored here.
 - **Discussions** — Org-wide Q&A, knowledge sharing, and training follow-ups (enable in repo Settings > Discussions)
 
 ## For the Team
